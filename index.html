@@ -16,7 +16,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
         }
         header {
@@ -24,6 +24,7 @@
             color: white;
             padding: 10px;
             width: 100%;
+            text-align: center;
         }
         .container {
             background: white;
@@ -38,19 +39,59 @@
             margin-top: 20px;
             font-size: 0.8em;
         }
+        .hidden {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Ligue Élite</h1>
     </header>
-    <div class="container">
+    <div id="coming-soon" class="container">
         <img src="https://cdn.discordapp.com/attachments/1182985293708656691/1260275422596300853/Ligue_Elite_Logo_4-removebg-preview.png?ex=668eba73&is=668d68f3&hm=b8d3a152d13aef068001694f0043eece4e1e95e2e62fe4b422f17455b05215b4&" alt="Ligue Élite Logo" class="logo">
         <p>Le site est en développement. Merci de revenir plus tard.</p>
     </div>
+    <div id="main-content" class="container hidden">
+        <h2>Prochains Matchs</h2>
+        <ul id="match-list">
+            <li id="match-8-aug">Prochain Match : TFC vs. OM - 8 Août 2024</li>
+        </ul>
+        <h2>Liens Utiles</h2>
+        <ul>
+            <li><a href="https://www.ligueelite.com/calendrier">Calendrier des matchs</a></li>
+            <li><a href="https://www.ligueelite.com/equipe">Information sur l'équipe</a></li>
+            <li><a href="https://www.ligueelite.com/contact">Contact</a></li>
+        </ul>
+    </div>
     <footer>
-        <p>&copy; 2024 Ligue Élite | Powered By Kemm's Studio. .</p>
+        <p>&copy; 2024 Ligue Élite | Powered By Kemm's Studio. </p>
     </footer>
+    <script>
+        // Vérifie la date actuelle
+        const today = new Date();
+        const releaseDate = new Date('2024-07-12');
+        const postMatchDate = new Date('2024-08-09');
+
+        // Sélectionne les éléments à afficher/masquer
+        const comingSoon = document.getElementById('coming-soon');
+        const mainContent = document.getElementById('main-content');
+        const match8Aug = document.getElementById('match-8-aug');
+
+        // Affiche le contenu approprié en fonction de la date
+        if (today >= releaseDate) {
+            comingSoon.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            mainContent.classList.add('visible');
+        }
+
+        // Masque le match du 8 août après le 9 août 2024
+        if (today >= postMatchDate) {
+            match8Aug.classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
-
